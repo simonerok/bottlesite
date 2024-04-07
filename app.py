@@ -11,7 +11,7 @@ from icecream import ic
 ##############################
 @get("/")
 def _():
-    return template("index")
+    return template("index.html")
 
 ##############################
 @get("/api")
