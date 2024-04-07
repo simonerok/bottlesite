@@ -5,7 +5,7 @@ from bottle import default_app, get, run, static_file
 ##############################
 @get("/")
 def _():
-    return "x"
+    return [{"name":"one"}]
 
 
 ##############################
