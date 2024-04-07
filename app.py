@@ -1,11 +1,11 @@
-from bottle import default_app, get, run, static_file
+from bottle import default_app, get, run, static_file, template
 
 # https://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@github.com/santiagodonoso/bottlesite.git
 
 ##############################
 @get("/")
 def _():
-    return [{"name":"one"}]
+    return template("index")
 
 
 ##############################
