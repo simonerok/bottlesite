@@ -1,4 +1,8 @@
-from bottle import default_app, get, run, static_file
+try:
+    import production
+    from bottlesite.bottle  import default_app, get, run, static_file
+except:
+    from bottle             import default_app, get, run, static_file
 
 # https://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@github.com/santiagodonoso/bottlesite.git
 
