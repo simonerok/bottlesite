@@ -4,9 +4,11 @@ except:
     from bottle             import default_app, get, run, static_file, template
 
 
+import x
 from icecream import ic
 
 # https://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@github.com/santiagodonoso/bottlesite.git
+
 
 ##############################
 @get("/")
@@ -14,10 +16,12 @@ def _():
     ic("xxxxx")
     return template("index.html")
 
+
 ##############################
 @get("/api")
 def _():
-    return [{"name":"one1"}]
+    return x.test()
+
 
 ##############################
 try:
