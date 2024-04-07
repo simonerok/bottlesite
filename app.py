@@ -1,4 +1,9 @@
-from bottle import default_app, get, run, static_file, template
+try:
+    from bottlesite.bottle  import default_app, get, run, static_file, template
+except:
+    from bottle             import default_app, get, run, static_file, template
+
+
 from icecream import ic
 
 # https://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@github.com/santiagodonoso/bottlesite.git
@@ -8,6 +13,10 @@ from icecream import ic
 def _():
     return template("index")
 
+##############################
+@get("/api")
+def _():
+    return [{"name":"one"}]
 
 ##############################
 try:
