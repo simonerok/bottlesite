@@ -11,10 +11,10 @@ def _():
 
 ##############################
 try:
-    # import production
-    run(host="0.0.0.0", port=80, debug=True, reloader=True, interval=0)
-except:
+    import production
     application = default_app()
+except:
+    run(host="0.0.0.0", port=80, debug=True, reloader=True, interval=0)
 
 
 
