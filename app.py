@@ -1,6 +1,4 @@
-try: from bottlesite.bottle     import default_app, get, run, static_file, template
-except: from bottle             import default_app, get, run, static_file, template
-
+from bottle import default_app, get, run, static_file, template
 import x
 from icecream import ic
 
