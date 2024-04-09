@@ -31,6 +31,19 @@ def validate_logged():
     if not user_id: raise Exception("***** user not logged *****", 400)
     return user_id
 
+
+##############################
+
+USER_ID_LEN = 32
+USER_ID_REGEX = "^[a-f0-9]{32}$"
+
+def validate_user_id():
+	error = f"user_id invalid"
+	user_id = request.forms.get("user_id", "").strip()      
+	if not re.match(USER_ID_REGEX, user_id): raise Exception(error, 400)
+	return user_id
+
+
 ##############################
 
 EMAIL_MAX = 100
