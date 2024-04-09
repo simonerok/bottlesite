@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {{ get("title", "Company") }}
+    </title>
+</head>
+<body>
+    
+    <nav>
+        <a href="/" class="{{ get('active_home', '') }}">Home</a>
+        <a href="/login" class="{{ get('active_login', '') }}">Login</a>
+    </nav>
