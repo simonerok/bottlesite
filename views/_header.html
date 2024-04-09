@@ -20,7 +20,17 @@
         >
             roofs
         </a>
-        <a href="/signup" class="{{ get('active_login', '') }}">
-            Your property
-        </a>
+
+        <form>
+            <input type="text" placeholder="Where?">
+        </form>
+
+        <div>
+            <a href="/signup" class="{{ get('active_login', '') }}">
+                Your property
+            </a>
+            <a href="/login" class="{{ get('active_login', '') }}">
+                Login
+            </a>
+        </div>
     </nav>

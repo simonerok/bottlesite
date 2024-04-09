@@ -3,5 +3,8 @@
 @tailwind utilities;
 
 input, button{
-    @apply h-8;
+    @apply h-8 rounded-sm outline-none;
+}
+input{
+    @apply px-1 border border-neutral-400;
 }
