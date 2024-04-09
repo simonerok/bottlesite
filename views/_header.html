@@ -3,13 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/app.css">
     <title>
         {{ get("title", "Company") }}
     </title>
 </head>
-<body>
+<body class="w-full h-screen overflow-x-hidden">
+
+    <div id="toast"></div>
+
     
-    <nav>
-        <a href="/" class="{{ get('active_home', '') }}">Home</a>
-        <a href="/login" class="{{ get('active_login', '') }}">Login</a>
+    <nav class="flex justify-between w-full h-12 items-center px-2">
+
+        <a href="/" class="{{ get('active_home', '') }} 
+            flex items-center gap-1 px-4 font-bold text-2xl text-white bg-dragon-fruit rounded-md"
+        >
+            roofs
+        </a>
+        <a href="/signup" class="{{ get('active_login', '') }}">
+            Your property
+        </a>
     </nav>

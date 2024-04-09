@@ -3,12 +3,19 @@ import x
 from icecream import ic
 import bcrypt
 
+##############################
+@get("/app.css")
+def _():
+    return static_file("app.css", ".")
 
+##############################
+@get("/roofs.png")
+def _():
+    return static_file("roofs.png", "images")
 
 ##############################
 @get("/")
 def _():
-    ic("xxxxx")
     return template("index.html")
 
 
