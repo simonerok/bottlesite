@@ -1,18 +1,12 @@
 %include("_header")
 
 <main class="pb-16">
-    <div id="items" class="grid grid-cols-3 gap-4">
+    <div id="items" class="grid grid-cols-1 lg:grid-cols-4 gap-4 gap-y-12 pb-10">
         % for item in items:
            %include("_item")
         % end
     </div>
-    <button id="more" class="block w-1/2 text-white bg-dragon-fruit mx-auto"
-        mix-get="/items/page/2"
-        mix-default="more"
-        mix-await="Please wait..."
-    >
-        more
-    </button>
+    %include("_btn_more", page_number=2)
 </main>
 
 

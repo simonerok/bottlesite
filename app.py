@@ -27,7 +27,7 @@ def _(item_splash_image):
 def _():
     try:
         db = x.db()
-        q = db.execute("SELECT * FROM items ORDER BY item_created_at LIMIT 0, 3")
+        q = db.execute("SELECT * FROM items ORDER BY item_created_at LIMIT 0, ?", (x.ITEMS_PER_PAGE,))
         items = q.fetchall()
         ic(items)
         return template("index.html", items=items)
@@ -43,25 +43,19 @@ def _(page_number):
     try:
         db = x.db()
         next_page = int(page_number) + 1
-        offset = (int(page_number) - 1) * 3
+        offset = (int(page_number) - 1) * x.ITEMS_PER_PAGE
         q = db.execute(f"""     SELECT * FROM items 
                                 ORDER BY item_created_at 
-                                LIMIT 3 OFFSET {offset}
-                        """)
+                                LIMIT ? OFFSET {offset}
+                        """, (x.ITEMS_PER_PAGE,))
         items = q.fetchall()
         ic(items)
         html = ""
-        for item in items: html += template("_item", item=item)
-        btn_more = f"""
-            <button id="more" class="block w-1/2 text-white bg-dragon-fruit mx-auto"
-                mix-get="/items/page/{next_page}"
-                mix-default="more"
-                mix-await="Please wait..."
-            >
-                more
-            </button>  
-        """
-        if len(items) < 3: btn_more = ""
+        for item in items: 
+            html += template("_item", item=item)
+        btn_more = template("_btn_more", page_number=next_page)
+        if len(items) < x.ITEMS_PER_PAGE: 
+            btn_more = ""
         return f"""
         <template mix-target="#items" mix-bottom>
             {html}

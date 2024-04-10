@@ -3,6 +3,7 @@ import os
 import re
 import sqlite3
 
+ITEMS_PER_PAGE = 4
 COOKIE_SECRET = "41ebeca46f3b-4d77-a8e2-554659075C6319a2fbfb-9a2D-4fb6-Afcad32abb26a5e0"
 
 ##############################
