@@ -8,6 +8,14 @@ import bcrypt
 def _():
     return static_file("app.css", ".")
 
+
+##############################
+@get("/mixhtml.js")
+def _():
+    return static_file("mixhtml.js", ".")
+
+
+
 ##############################
 @get("/images/<item_splash_image>")
 def _(item_splash_image):

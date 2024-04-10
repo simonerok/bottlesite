@@ -45,15 +45,15 @@ CREATE TABLE items(
 
 INSERT INTO items VALUES
 ("5dbce622fa2b4f22a6f6957d07ff4951", "One", "5dbce622fa2b4f22a6f6957d07ff4951.webp", 0, 0),
-("5dbce622fa2b4f22a6f6957d07ff4952", "One", "5dbce622fa2b4f22a6f6957d07ff4952.webp", 0, 0),
-("5dbce622fa2b4f22a6f6957d07ff4953", "One", "5dbce622fa2b4f22a6f6957d07ff4953.webp", 0, 0),
-("5dbce622fa2b4f22a6f6957d07ff4954", "One", "5dbce622fa2b4f22a6f6957d07ff4954.webp", 0, 0),
-("5dbce622fa2b4f22a6f6957d07ff4955", "One", "5dbce622fa2b4f22a6f6957d07ff4955.webp", 0, 0),
-("5dbce622fa2b4f22a6f6957d07ff4956", "One", "5dbce622fa2b4f22a6f6957d07ff4956.webp", 0, 0),
-("5dbce622fa2b4f22a6f6957d07ff4957", "One", "5dbce622fa2b4f22a6f6957d07ff4957.webp", 0, 0),
-("5dbce622fa2b4f22a6f6957d07ff4958", "One", "5dbce622fa2b4f22a6f6957d07ff4958.webp", 0, 0),
-("5dbce622fa2b4f22a6f6957d07ff4959", "One", "5dbce622fa2b4f22a6f6957d07ff4959.webp", 0, 0),
-("5dbce622fa2b4f22a6f6957d07ff4910", "One", "5dbce622fa2b4f22a6f6957d07ff4910.webp", 0, 0);
+("5dbce622fa2b4f22a6f6957d07ff4952", "Two", "5dbce622fa2b4f22a6f6957d07ff4952.webp", 0, 0),
+("5dbce622fa2b4f22a6f6957d07ff4953", "Three", "5dbce622fa2b4f22a6f6957d07ff4953.webp", 0, 0),
+("5dbce622fa2b4f22a6f6957d07ff4954", "Four", "5dbce622fa2b4f22a6f6957d07ff4954.webp", 0, 0),
+("5dbce622fa2b4f22a6f6957d07ff4955", "Five", "5dbce622fa2b4f22a6f6957d07ff4955.webp", 0, 0),
+("5dbce622fa2b4f22a6f6957d07ff4956", "Six", "5dbce622fa2b4f22a6f6957d07ff4956.webp", 0, 0),
+("5dbce622fa2b4f22a6f6957d07ff4957", "Seven", "5dbce622fa2b4f22a6f6957d07ff4957.webp", 0, 0),
+("5dbce622fa2b4f22a6f6957d07ff4958", "Eight", "5dbce622fa2b4f22a6f6957d07ff4958.webp", 0, 0),
+("5dbce622fa2b4f22a6f6957d07ff4959", "Nine", "5dbce622fa2b4f22a6f6957d07ff4959.webp", 0, 0),
+("5dbce622fa2b4f22a6f6957d07ff4910", "Ten", "5dbce622fa2b4f22a6f6957d07ff4910.webp", 0, 0);
 
 
 
