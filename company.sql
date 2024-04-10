@@ -32,6 +32,35 @@ INSERT INTO users VALUES(
 );
 
 
+DROP TABLE IF EXISTS items;
+
+CREATE TABLE items(
+    item_pk                 TEXT,
+    item_name               TEXT,
+    item_splash_image       TEXT,
+    item_created_at         INTEGER,
+    item_updated_at         INTEGER,
+    PRIMARY KEY(item_pk)
+) WITHOUT ROWID;
+
+INSERT INTO items VALUES
+("5dbce622fa2b4f22a6f6957d07ff4951", "One", "5dbce622fa2b4f22a6f6957d07ff4951", 0, 0),
+("5dbce622fa2b4f22a6f6957d07ff4952", "One", "5dbce622fa2b4f22a6f6957d07ff4952", 0, 0),
+("5dbce622fa2b4f22a6f6957d07ff4953", "One", "5dbce622fa2b4f22a6f6957d07ff4953", 0, 0),
+("5dbce622fa2b4f22a6f6957d07ff4954", "One", "5dbce622fa2b4f22a6f6957d07ff4954", 0, 0),
+("5dbce622fa2b4f22a6f6957d07ff4955", "One", "5dbce622fa2b4f22a6f6957d07ff4955", 0, 0),
+("5dbce622fa2b4f22a6f6957d07ff4956", "One", "5dbce622fa2b4f22a6f6957d07ff4956", 0, 0),
+("5dbce622fa2b4f22a6f6957d07ff4957", "One", "5dbce622fa2b4f22a6f6957d07ff4957", 0, 0),
+("5dbce622fa2b4f22a6f6957d07ff4958", "One", "5dbce622fa2b4f22a6f6957d07ff4958", 0, 0),
+("5dbce622fa2b4f22a6f6957d07ff4959", "One", "5dbce622fa2b4f22a6f6957d07ff4959", 0, 0),
+("5dbce622fa2b4f22a6f6957d07ff4910", "One", "5dbce622fa2b4f22a6f6957d07ff4910", 0, 0);
+
+
+
+
+
+
+
 
 
 

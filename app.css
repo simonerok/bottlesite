@@ -591,10 +591,6 @@ video {
   width: 100%;
 }
 
-.grid-cols-\[1fr_20fr_1fr\] {
-  grid-template-columns: 1fr 20fr 1fr;
-}
-
 .grid-cols-\[1fr_20fr_5fr\] {
   grid-template-columns: 1fr 20fr 5fr;
 }
@@ -658,6 +654,11 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+main {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 form {

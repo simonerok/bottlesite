@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+main{
+    @apply px-2;
+}
 form{
     @apply w-full;
 }

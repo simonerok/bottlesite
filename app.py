@@ -16,8 +16,14 @@ def _():
 ##############################
 @get("/")
 def _():
-    return template("index.html")
-
+    try:
+        db = x.db()
+        q = db.execute("SELECT * FROM items LIMIT 0, 3")
+        items = q.fetchall()
+        ic(items)
+        return template("index.html")
+    except Exception as ex:
+        return "ups..."
 
 
 ##############################
