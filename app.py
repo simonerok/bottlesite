@@ -49,7 +49,15 @@ def _(page_number):
                         """)
         items = q.fetchall()
         ic(items)
-        return json.dumps(items)
+        html = ""
+        for item in items:
+            div_item = template("_item", item=item)
+            html = html + div_item
+        return f"""
+        <template mix-target="#items" mix-bottom>
+            {html}
+        </template>
+        """
     except Exception as ex:
         ic(ex)
         return "ups..."
