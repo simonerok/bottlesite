@@ -9,9 +9,9 @@ def _():
     return static_file("app.css", ".")
 
 ##############################
-@get("/roofs.png")
-def _():
-    return static_file("roofs.png", "images")
+@get("/images/<item_splash_image>")
+def _(item_splash_image):
+    return static_file(item_splash_image, "images")
 
 ##############################
 @get("/")
@@ -21,10 +21,12 @@ def _():
         q = db.execute("SELECT * FROM items LIMIT 0, 3")
         items = q.fetchall()
         ic(items)
-        return template("index.html")
+        return template("index.html", items=items)
     except Exception as ex:
+        ic(ex)
         return "ups..."
-
+    finally:
+        if "db" in locals(): db.close()
 
 ##############################
 @get("/login")
