@@ -53,7 +53,7 @@ def _(page_number):
         html = ""
         for item in items: 
             html += template("_item", item=item)
-        btn_more = template("_btn_more", page_number=next_page)
+        btn_more = template("__btn_more", page_number=next_page)
         if len(items) < x.ITEMS_PER_PAGE: 
             btn_more = ""
         return f"""
