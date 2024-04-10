@@ -42,6 +42,7 @@ def _():
 def _(page_number):
     try:
         db = x.db()
+        next_page = int(page_number) + 1
         offset = (int(page_number) - 1) * 3
         q = db.execute(f"""     SELECT * FROM items 
                                 ORDER BY item_created_at 
@@ -56,6 +57,15 @@ def _(page_number):
         return f"""
         <template mix-target="#items" mix-bottom>
             {html}
+        </template>
+        <template mix-target="#more" mix-replace>
+            <button id="more" class="block w-1/2 text-white bg-dragon-fruit mx-auto"
+                mix-get="/items/page/{next_page}"
+                mix-default="more"
+                mix-await="Please wait..."
+            >
+                more
+            </button>            
         </template>
         """
     except Exception as ex:
