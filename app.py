@@ -2,6 +2,7 @@ from bottle import default_app, get, post, response, run, static_file, template
 import x
 from icecream import ic
 import bcrypt
+import json
 
 ##############################
 @get("/app.css")
@@ -26,7 +27,7 @@ def _(item_splash_image):
 def _():
     try:
         db = x.db()
-        q = db.execute("SELECT * FROM items LIMIT 0, 3")
+        q = db.execute("SELECT * FROM items ORDER BY item_created_at LIMIT 0, 3")
         items = q.fetchall()
         ic(items)
         return template("index.html", items=items)
@@ -35,6 +36,29 @@ def _():
         return "ups..."
     finally:
         if "db" in locals(): db.close()
+
+##############################
+@get("/items/page/<page_number>")
+def _(page_number):
+    try:
+        db = x.db()
+        offset = (int(page_number) - 1) * 3
+        q = db.execute(f"""     SELECT * FROM items 
+                                ORDER BY item_created_at 
+                                LIMIT 3 OFFSET {offset}
+                        """)
+        items = q.fetchall()
+        ic(items)
+        return json.dumps(items)
+    except Exception as ex:
+        ic(ex)
+        return "ups..."
+    finally:
+        if "db" in locals(): db.close()
+
+
+
+
 
 ##############################
 @get("/login")

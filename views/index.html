@@ -3,16 +3,14 @@
 <main class="">
     <div id="items" class="grid grid-cols-3 gap-4">
         % for item in items:
-            <div class="item">
-                <img src="/images/{{item['item_splash_image']}}" 
-                class="w-full aspect-square object-cover rounded-lg">
-                <p>
-                    {{item["item_name"]}}
-                </p>
-            </div>
+           %include("_item")
         % end
     </div>
-    <button class="block w-1/2 text-white bg-dragon-fruit mx-auto">
+    <button class="block w-1/2 text-white bg-dragon-fruit mx-auto"
+        mix-get="/items/page/1"
+        mix-default="more"
+        mix-await="Please wait..."
+    >
         more
     </button>
 </main>

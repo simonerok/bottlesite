@@ -44,19 +44,38 @@ CREATE TABLE items(
 ) WITHOUT ROWID;
 
 INSERT INTO items VALUES
-("5dbce622fa2b4f22a6f6957d07ff4951", "One", "5dbce622fa2b4f22a6f6957d07ff4951.webp", 0, 0),
-("5dbce622fa2b4f22a6f6957d07ff4952", "Two", "5dbce622fa2b4f22a6f6957d07ff4952.webp", 0, 0),
-("5dbce622fa2b4f22a6f6957d07ff4953", "Three", "5dbce622fa2b4f22a6f6957d07ff4953.webp", 0, 0),
-("5dbce622fa2b4f22a6f6957d07ff4954", "Four", "5dbce622fa2b4f22a6f6957d07ff4954.webp", 0, 0),
-("5dbce622fa2b4f22a6f6957d07ff4955", "Five", "5dbce622fa2b4f22a6f6957d07ff4955.webp", 0, 0),
-("5dbce622fa2b4f22a6f6957d07ff4956", "Six", "5dbce622fa2b4f22a6f6957d07ff4956.webp", 0, 0),
-("5dbce622fa2b4f22a6f6957d07ff4957", "Seven", "5dbce622fa2b4f22a6f6957d07ff4957.webp", 0, 0),
-("5dbce622fa2b4f22a6f6957d07ff4958", "Eight", "5dbce622fa2b4f22a6f6957d07ff4958.webp", 0, 0),
-("5dbce622fa2b4f22a6f6957d07ff4959", "Nine", "5dbce622fa2b4f22a6f6957d07ff4959.webp", 0, 0),
-("5dbce622fa2b4f22a6f6957d07ff4910", "Ten", "5dbce622fa2b4f22a6f6957d07ff4910.webp", 0, 0);
+("5dbce622fa2b4f22a6f6957d07ff4951", "One", "5dbce622fa2b4f22a6f6957d07ff4951.webp", 1, 0),
+("5dbce622fa2b4f22a6f6957d07ff4952", "Two", "5dbce622fa2b4f22a6f6957d07ff4952.webp", 2, 0),
+("5dbce622fa2b4f22a6f6957d07ff4953", "Three", "5dbce622fa2b4f22a6f6957d07ff4953.webp", 3, 0),
+("5dbce622fa2b4f22a6f6957d07ff4954", "Four", "5dbce622fa2b4f22a6f6957d07ff4954.webp", 4, 0),
+("5dbce622fa2b4f22a6f6957d07ff4955", "Five", "5dbce622fa2b4f22a6f6957d07ff4955.webp", 5, 0),
+("5dbce622fa2b4f22a6f6957d07ff4956", "Six", "5dbce622fa2b4f22a6f6957d07ff4956.webp", 6, 0),
+("5dbce622fa2b4f22a6f6957d07ff4957", "Seven", "5dbce622fa2b4f22a6f6957d07ff4957.webp", 7, 0),
+("5dbce622fa2b4f22a6f6957d07ff4958", "Eight", "5dbce622fa2b4f22a6f6957d07ff4958.webp", 8, 0),
+("5dbce622fa2b4f22a6f6957d07ff4959", "Nine", "5dbce622fa2b4f22a6f6957d07ff4959.webp", 9, 0),
+("5dbce622fa2b4f22a6f6957d07ff4910", "Ten", "5dbce622fa2b4f22a6f6957d07ff4910.webp", 10, 0);
+
+-- (page_number - 1) * items_per_page
+-- (1 - 1) * 3 = 10 1 2
+-- (2 - 1) * 3 = 3 4 5
+-- (3 - 1) * 3 = 6 7 8
 
 
+-- Page 4
+-- 0 3 6 9
+SELECT * FROM items 
+ORDER BY item_created_at
+LIMIT 9,3;
 
+
+-- offset = (currentPage - 1) * itemsPerPage
+-- page 1 = 1 2 3
+-- page 2 = 4 5 6
+-- page 3 = 7 8 9
+-- page 4 = 10
+SELECT * FROM items 
+ORDER BY item_created_at
+LIMIT 3 OFFSET 9;
 
 
 
