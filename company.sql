@@ -13,7 +13,7 @@ CREATE TABLE users(
     user_created_at         INTEGER,
     user_updated_at         INTEGER,
     user_is_verified        INTEGER,
-    user_is_active          INTEGER,
+    user_is_blocked         INTEGER,
     PRIMARY KEY(user_pk)
 ) WITHOUT ROWID;
 
@@ -28,7 +28,7 @@ INSERT INTO users VALUES(
     1712674758,
     0,
     1,
-    1
+    0
 );
 
 
