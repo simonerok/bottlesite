@@ -51,21 +51,23 @@ def _(page_number):
         items = q.fetchall()
         ic(items)
         html = ""
-        for item in items:
-            div_item = template("_item", item=item)
-            html = html + div_item
-        return f"""
-        <template mix-target="#items" mix-bottom>
-            {html}
-        </template>
-        <template mix-target="#more" mix-replace>
+        for item in items: html += template("_item", item=item)
+        btn_more = f"""
             <button id="more" class="block w-1/2 text-white bg-dragon-fruit mx-auto"
                 mix-get="/items/page/{next_page}"
                 mix-default="more"
                 mix-await="Please wait..."
             >
                 more
-            </button>            
+            </button>  
+        """
+        if len(items) < 3: btn_more = ""
+        return f"""
+        <template mix-target="#items" mix-bottom>
+            {html}
+        </template>
+        <template mix-target="#more" mix-replace>
+            {btn_more}
         </template>
         """
     except Exception as ex:
