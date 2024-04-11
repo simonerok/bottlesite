@@ -165,9 +165,7 @@ function process_template(mix_url){
     document.querySelectorAll('template[mix-function]').forEach(template => {
         function_name = template.getAttribute("mix-function")
         console.log(`ok : mix() the response data will run the function '${function_name}'`)
-        items = template.innerHTML
-        // console.log(items)
-        window[function_name](items)
+        window[function_name](template.innerHTML)
         template.remove()
     })    
 }
