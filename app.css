@@ -618,6 +618,14 @@ video {
   margin-top: 0.5rem;
 }
 
+.mt-0 {
+  margin-top: 0px;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
 .block {
   display: block;
 }
@@ -656,6 +664,14 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-\[calc\(100\%-10rem\)\] {
+  height: calc(100% - 10rem);
+}
+
+.h-40 {
+  height: 10rem;
 }
 
 .w-1\/3 {
@@ -708,6 +724,10 @@ video {
 
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-0 {
+  gap: 0px;
 }
 
 .gap-y-4 {
@@ -860,6 +880,10 @@ input {
 @media (min-width: 1024px) {
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .lg\:px-4 {
