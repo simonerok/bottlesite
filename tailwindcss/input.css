@@ -21,7 +21,7 @@
 /* end mixhtml */
 
 main{
-    @apply px-2;
+    @apply pt-20;
 }
 form{
     @apply w-full;

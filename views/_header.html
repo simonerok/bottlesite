@@ -3,21 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+
+
     <link rel="stylesheet" href="/app.css">
     <script src="/mixhtml.js" defer></script>
+    <script src="/app.js" defer></script>
     <title>
         {{ get("title", "Company") }}
     </title>
 </head>
-<body class="w-full h-screen overflow-x-hidden lg:px-24 text-neutral-900 font-light">
+<body class="w-full h-screen overflow-x-hidden text-neutral-900 font-light">
 
     <div id="toast"></div>
 
     
-    <nav class="grid grid-cols-[1fr_20fr_5fr] gap-4 w-full h-16 items-center px-2">
+    <nav class="fixed top-0 left-0 grid grid-cols-[1fr_20fr_5fr] gap-4 w-full h-20 bg-white items-center px-2 lg:px-4">
 
         <a href="/" class="{{ get('active_home', '') }} 
-            flex items-center h-12 px-4 font-bold text-2xl text-white bg-dragon-fruit rounded-md"
+            flex items-center h-12 px-4 font-bold text-2xl text-white bg-neutral-800 rounded-md"
         >
             bottlesite
         </a>

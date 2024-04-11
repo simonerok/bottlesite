@@ -120,7 +120,10 @@ function process_template(mix_url){
 
 
     
-    if( ! document.querySelector("template[mix-target]") ){ cl(`mix-target not found`); return }
+    if( ! document.querySelector("template[mix-target]") && ! document.querySelector("template[mix-function]") ){ 
+        cl(`eror = mix-target nor mix-function found`)
+        return 
+    }
     document.querySelectorAll('template[mix-target]').forEach(template => {
         // console.log("template", template)  
 
@@ -159,6 +162,14 @@ function process_template(mix_url){
         mixonurl(mix_url)
 
     })
+    document.querySelectorAll('template[mix-function]').forEach(template => {
+        function_name = template.getAttribute("mix-function")
+        console.log(`ok : mix() the response data will run the function '${function_name}'`)
+        items = template.innerHTML
+        // console.log(items)
+        window[function_name](items)
+        template.remove()
+    })    
 }
 
 

@@ -3,6 +3,7 @@ import x
 from icecream import ic
 import bcrypt
 import json
+import credentials
 
 ##############################
 @get("/app.css")
@@ -11,9 +12,9 @@ def _():
 
 
 ##############################
-@get("/mixhtml.js")
-def _():
-    return static_file("mixhtml.js", ".")
+@get("/<file_name>.js")
+def _(file_name):
+    return static_file(file_name+".js", ".")
 
 
 
@@ -30,7 +31,7 @@ def _():
         q = db.execute("SELECT * FROM items ORDER BY item_created_at LIMIT 0, ?", (x.ITEMS_PER_PAGE,))
         items = q.fetchall()
         ic(items)
-        return template("index.html", items=items)
+        return template("index.html", items=items, mapbox_token=credentials.mapbox_token)
     except Exception as ex:
         ic(ex)
         return "ups..."
@@ -63,6 +64,7 @@ def _(page_number):
         <template mix-target="#more" mix-replace>
             {btn_more}
         </template>
+        <template mix-function="test">{json.dumps(items)}</template>
         """
     except Exception as ex:
         ic(ex)
