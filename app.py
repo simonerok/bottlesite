@@ -134,11 +134,24 @@ def _():
     except Exception as ex:
         try:
             response.status = ex.args[1]
-            return ex.args[0]
+            return f"""
+            <template mix-target="#toast">
+                <div mix-ttl="3000" class="error">
+                    {ex.args[0]}
+                </div>
+            </template>
+            """
         except Exception as ex:
             ic(ex)
             response.status = 500
-            return "ups..."
+            return f"""
+            <template mix-target="#toast">
+                <div mix-ttl="3000" class="error">
+                   System under maintainance
+                </div>
+            </template>
+            """
+        
 
     finally:
         if "db" in locals(): db.close()

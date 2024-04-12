@@ -4,7 +4,7 @@
 
 /* mixhtml */
 .mix-error{
-    background-color: rgba(255,0,0,0.2);
+    background-color: rgba(240,240,240,1);
 }
 
 @keyframes fadeOut {
@@ -27,8 +27,17 @@ form{
     @apply w-full;
 }
 input, button{
-    @apply w-full h-12 rounded-md outline-none;
+    @apply w-full h-12 rounded-md outline-none !important;
 }
 input{
     @apply px-2 border border-neutral-400;
+}
+button{
+    @apply text-white bg-neutral-800;
+}
+#toast .ok{
+    @apply p-4 text-white bg-green-700 rounded-full;
+}
+#toast .error{
+    @apply p-4 text-white bg-pink-800 rounded-full;
 }
