@@ -6,6 +6,7 @@ import sqlite3
 ITEMS_PER_PAGE = 2
 COOKIE_SECRET = "41ebeca46f3b-4d77-a8e2-554659075C6319a2fbfb-9a2D-4fb6-Afcad32abb26a5e0"
 
+
 ##############################
 def dict_factory(cursor, row):
     col_names = [col[0] for col in cursor.description]
@@ -18,8 +19,20 @@ def db():
     db.row_factory = dict_factory
     return db
 
+
 ##############################
-COOKIE_SECRET_KEY = "429c6db7-0c7f-4836-9dbb-315ba228b8a9#f328df55-6862-4341-8611-e97e6585b9ab"
+def no_cache():
+    response.add_header("Cache-Control", "no-cache, no-store, must-revalidate")
+    response.add_header("Pragma", "no-cache")
+    response.add_header("Expires", 0)    
+
+
+##############################
+def validate_user_logged():
+    user = request.get_cookie("user", secret=COOKIE_SECRET)
+    if user is None: raise Exception("user must login", 400)
+    return user
+
 
 ##############################
 

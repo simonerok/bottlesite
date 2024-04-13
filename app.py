@@ -83,6 +83,26 @@ def _():
 
 
 ##############################
+@get("/profile")
+def _():
+    try:
+        x.no_cache()
+        x.validate_user_logged()
+        return template("profile.html")
+    except Exception as ex:
+        ic(ex)
+        response.status = 301  # or 302 for temporary redirect
+        response.set_header('Location', '/login')
+        return
+
+
+##############################
+@get("/logout")
+def _():
+    response.delete_cookie("user")
+    return """<template mix-redirect="/login"></template>"""
+
+##############################
 @get("/api")
 def _():
     return x.test()

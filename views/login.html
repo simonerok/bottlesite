@@ -2,10 +2,10 @@
 %include("_header")
 
 <main class="flex h-full items-center justify-center">
-    <form id="frm_login" class="flex flex-col gap-2 w-full mx-4 md:w-1/2">
-        <input name="user_email" class="w-full border" type="text" placeholder="email" 
+    <form id="frm_login" autocomplete="off" class="flex flex-col gap-2 w-full mx-4 md:w-1/2">
+        <input name="user_email" class="w-full border" type="text" placeholder="email" value="admin@company.com" 
             mix-check="{{x.EMAIL_REGEX}}">
-        <input name="user_password" class="w-full border" type="password" placeholder="password" 
+        <input name="user_password" class="w-full border" type="password" placeholder="password" value="password"
             mix-check="{{x.USER_PASSWORD_REGEX}}">
         <button class=""
             mix-data="#frm_login"
