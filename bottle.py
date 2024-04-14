@@ -1760,7 +1760,7 @@ class JSONPlugin(object):
             except HTTPResponse:
                 rv = _e()
 
-            if isinstance(rv, dict):
+            if isinstance(rv, dict) or isinstance(rv, list):
                 #Attempt to serialize, raises exception on failure
                 json_response = dumps(rv)
                 #Set content type only if serialization succesful

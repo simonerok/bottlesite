@@ -19,6 +19,11 @@ def _():
 def _(file_name):
     return static_file(file_name+".js", ".")
 
+##############################
+@get("/test")
+def _():
+    return [{"name":"one"}]
+
 
 
 ##############################
