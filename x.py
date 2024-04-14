@@ -1,5 +1,7 @@
-from bottle import request, response
 import os
+import sys
+sys.path.insert(0, os.getcwd()+"/bottle.py")
+from bottle import request, response
 import re
 import sqlite3
 

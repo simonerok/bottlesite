@@ -1,3 +1,6 @@
+import os
+import sys
+sys.path.insert(0, os.getcwd()+"/bottle.py")
 from bottle import default_app, get, post, response, run, static_file, template
 import x
 from icecream import ic
@@ -91,7 +94,7 @@ def _():
         return template("profile.html")
     except Exception as ex:
         ic(ex)
-        response.status = 301  # or 302 for temporary redirect
+        response.status = 303 
         response.set_header('Location', '/login')
         return
 
