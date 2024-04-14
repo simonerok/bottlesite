@@ -1,4 +1,7 @@
-import pathlib
+# path to bottle main package to replace
+# /home/bottlesite/.local/lib/python3.10/site-packages/bottle.py
+
+# import pathlib
 # import sys
 # sys.path.insert(0, str(pathlib.Path(__file__).parent.resolve())+"/bottle")
 from bottle import default_app, get, post, response, run, static_file, template
