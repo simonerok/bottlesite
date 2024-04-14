@@ -37,7 +37,7 @@ def _():
         return template("index.html", items=items, mapbox_token=credentials.mapbox_token)
     except Exception as ex:
         ic(ex)
-        return "ups..."
+        return ex
     finally:
         if "db" in locals(): db.close()
 
