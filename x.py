@@ -1,6 +1,6 @@
-import os
+import pathlib
 import sys
-sys.path.insert(0, os.getcwd()+"/bottle.py")
+sys.path.insert(0, str(pathlib.Path(__file__).parent.resolve())+"/bottle.py")
 from bottle import request, response
 import re
 import sqlite3
@@ -17,7 +17,7 @@ def dict_factory(cursor, row):
 ##############################
 
 def db():
-    db = sqlite3.connect(os.getcwd()+"/company.db")  
+    db = sqlite3.connect(str(pathlib.Path(__file__).parent.resolve())+"/company.db")  
     db.row_factory = dict_factory
     return db
 
