@@ -30,6 +30,7 @@ def _(item_splash_image):
 @get("/")
 def _():
     try:
+        return "x"
         db = x.db()
         q = db.execute("SELECT * FROM items ORDER BY item_created_at LIMIT 0, ?", (x.ITEMS_PER_PAGE,))
         items = q.fetchall()
