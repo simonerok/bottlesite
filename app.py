@@ -1,6 +1,6 @@
-import os
+import pathlib
 import sys
-sys.path.insert(0, os.getcwd()+"/bottle.py")
+sys.path.insert(0, str(pathlib.Path(__file__).parent.resolve())+"/bottle.py")
 from bottle import default_app, get, post, response, run, static_file, template
 import x
 from icecream import ic
