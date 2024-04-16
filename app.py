@@ -63,9 +63,17 @@ def _(page_number):
                         """, (x.ITEMS_PER_PAGE,))
         items = q.fetchall()
         ic(items)
+
+        is_logged = False
+        try:
+            x.validate_user_logged()
+            is_logged = True
+        except:
+            pass
+
         html = ""
         for item in items: 
-            html += template("_item", item=item)
+            html += template("_item", item=item, is_logged=is_logged)
         btn_more = template("__btn_more", page_number=next_page)
         if len(items) < x.ITEMS_PER_PAGE: 
             btn_more = ""
