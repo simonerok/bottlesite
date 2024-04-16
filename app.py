@@ -4,7 +4,7 @@
 # import pathlib
 # import sys
 # sys.path.insert(0, str(pathlib.Path(__file__).parent.resolve())+"/bottle")
-from bottle import default_app, get, post, response, run, static_file, template
+from bottle import default_app, get, post, request, response, run, static_file, template
 import x
 from icecream import ic
 import bcrypt
@@ -22,17 +22,18 @@ def _():
 def _(file_name):
     return static_file(file_name+".js", ".")
 
+
 ##############################
 @get("/test")
 def _():
     return [{"name":"one"}]
 
 
-
 ##############################
 @get("/images/<item_splash_image>")
 def _(item_splash_image):
     return static_file(item_splash_image, "images")
+
 
 ##############################
 @get("/")
@@ -56,6 +57,7 @@ def _():
         return ex
     finally:
         if "db" in locals(): db.close()
+
 
 ##############################
 @get("/items/page/<page_number>")
@@ -100,9 +102,6 @@ def _(page_number):
         if "db" in locals(): db.close()
 
 
-
-
-
 ##############################
 @get("/login")
 def _():
@@ -129,6 +128,7 @@ def _():
     finally:
         if "db" in locals(): db.close()
 
+
 ##############################
 @get("/logout")
 def _():
@@ -136,6 +136,7 @@ def _():
     response.status = 303
     response.set_header('Location', '/login')
     return
+
 
 ##############################
 @get("/api")
@@ -216,6 +217,21 @@ def _():
     finally:
         if "db" in locals(): db.close()
 
+
+##############################
+@post("/toogle_item_block")
+def _():
+    try:
+        item_id = request.forms.get("item_id", '')
+        return f"""
+        <template mix-target="[id='{item_id}']" mix-replace>
+            xxxxx
+        </template>
+        """
+    except Exception as ex:
+        pass
+    finally:
+        if "db" in locals(): db.close()
 
 
 ##############################
