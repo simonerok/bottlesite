@@ -1,8 +1,14 @@
 %include("_header")
 
-<main>
+    <main id="profile" class="mt-16 p-4">
 
-    <a href="/logout" mix-get="/logout">Logout</a>
+    <section id="items" class="grid grid-cols-[1fr_1fr] gap-4">
+        % for item in items:
+            %include("_item")
+        % end
+    </section>
+    %include("__btn_more")
+
 </main>
 
 %include("_footer")

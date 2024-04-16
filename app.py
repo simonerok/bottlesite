@@ -91,6 +91,7 @@ def _(page_number):
 ##############################
 @get("/login")
 def _():
+    x.no_cache()
     return template("login.html")
 
 
@@ -100,19 +101,26 @@ def _():
     try:
         x.no_cache()
         x.validate_user_logged()
-        return template("profile.html")
+        db = x.db()
+        q = db.execute("SELECT * FROM items ORDER BY item_created_at LIMIT 0, ?", (x.ITEMS_PER_PAGE,))
+        items = q.fetchall()
+        ic(items)    
+        return template("profile.html", is_logged=True, items=items)
     except Exception as ex:
         ic(ex)
         response.status = 303 
         response.set_header('Location', '/login')
         return
-
+    finally:
+        if "db" in locals(): db.close()
 
 ##############################
 @get("/logout")
 def _():
     response.delete_cookie("user")
-    return """<template mix-redirect="/login"></template>"""
+    response.status = 303
+    response.set_header('Location', '/login')
+    return
 
 ##############################
 @get("/api")
@@ -159,7 +167,12 @@ def _():
         except:
             is_cookie_https = False        
         response.set_cookie("user", user, secret=x.COOKIE_SECRET, httponly=True, secure=is_cookie_https)
-        return """
+        
+        frm_login = template("__frm_login")
+        return f"""
+        <template mix-target="frm_login" mix-replace>
+            {frm_login}
+        </template>
         <template mix-redirect="/profile">
         </template>
         """
