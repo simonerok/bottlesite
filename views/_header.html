@@ -37,7 +37,7 @@
                 Your property
             </a>
 
-            % if defined("is_logged"):
+            % if get("is_logged", False):
                 <a href="/logout" class="{{ get('active_login', '') }}">
                     Logout
                 </a>
