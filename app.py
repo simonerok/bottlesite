@@ -1,14 +1,11 @@
 # path to bottle main package to replace with own bottle
 # /home/mysite/.local/lib/python3.10/site-packages/bottle.py
 
-<<<<<<< HEAD
 from bottle import default_app, get, post, response, run, static_file, template
-=======
 # import pathlib
 # import sys
 # sys.path.insert(0, str(pathlib.Path(__file__).parent.resolve())+"/bottle")
 from bottle import default_app, get, post, request, response, run, static_file, template
->>>>>>> c25bd0f0ff3e0fc1d3610304a33605c3325edf5c
 import x
 from icecream import ic
 import bcrypt
