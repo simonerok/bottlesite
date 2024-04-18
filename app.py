@@ -1,7 +1,14 @@
 # path to bottle main package to replace with own bottle
 # /home/mysite/.local/lib/python3.10/site-packages/bottle.py
 
+<<<<<<< HEAD
 from bottle import default_app, get, post, response, run, static_file, template
+=======
+# import pathlib
+# import sys
+# sys.path.insert(0, str(pathlib.Path(__file__).parent.resolve())+"/bottle")
+from bottle import default_app, get, post, request, response, run, static_file, template
+>>>>>>> c25bd0f0ff3e0fc1d3610304a33605c3325edf5c
 import x
 from icecream import ic
 import bcrypt
@@ -19,11 +26,11 @@ def _():
 def _(file_name):
     return static_file(file_name+".js", ".")
 
+
 ##############################
 @get("/test")
 def _():
     return [{"name":"one"}]
-
 
 
 ##############################
@@ -31,21 +38,30 @@ def _():
 def _(item_splash_image):
     return static_file(item_splash_image, "images")
 
+
 ##############################
 @get("/")
 def _():
     try:
         db = x.db()
         q = db.execute("SELECT * FROM items ORDER BY item_created_at LIMIT 0, ?", (x.ITEMS_PER_PAGE,))
-        # return "x"
         items = q.fetchall()
         ic(items)
-        return template("index.html", items=items, mapbox_token=credentials.mapbox_token)
+        is_logged = False
+        try:    
+            x.validate_user_logged()
+            is_logged = True
+        except:
+            pass
+
+        return template("index.html", items=items, mapbox_token=credentials.mapbox_token, 
+                        is_logged=is_logged)
     except Exception as ex:
         ic(ex)
         return ex
     finally:
         if "db" in locals(): db.close()
+
 
 ##############################
 @get("/items/page/<page_number>")
@@ -60,9 +76,17 @@ def _(page_number):
                         """, (x.ITEMS_PER_PAGE,))
         items = q.fetchall()
         ic(items)
+
+        is_logged = False
+        try:
+            x.validate_user_logged()
+            is_logged = True
+        except:
+            pass
+
         html = ""
         for item in items: 
-            html += template("_item", item=item)
+            html += template("_item", item=item, is_logged=is_logged)
         btn_more = template("__btn_more", page_number=next_page)
         if len(items) < x.ITEMS_PER_PAGE: 
             btn_more = ""
@@ -82,12 +106,10 @@ def _(page_number):
         if "db" in locals(): db.close()
 
 
-
-
-
 ##############################
 @get("/login")
 def _():
+    x.no_cache()
     return template("login.html")
 
 
@@ -97,19 +119,28 @@ def _():
     try:
         x.no_cache()
         x.validate_user_logged()
-        return template("profile.html")
+        db = x.db()
+        q = db.execute("SELECT * FROM items ORDER BY item_created_at LIMIT 0, ?", (x.ITEMS_PER_PAGE,))
+        items = q.fetchall()
+        ic(items)    
+        return template("profile.html", is_logged=True, items=items)
     except Exception as ex:
         ic(ex)
         response.status = 303 
         response.set_header('Location', '/login')
         return
+    finally:
+        if "db" in locals(): db.close()
 
 
 ##############################
 @get("/logout")
 def _():
     response.delete_cookie("user")
-    return """<template mix-redirect="/login"></template>"""
+    response.status = 303
+    response.set_header('Location', '/login')
+    return
+
 
 ##############################
 @get("/api")
@@ -156,7 +187,12 @@ def _():
         except:
             is_cookie_https = False        
         response.set_cookie("user", user, secret=x.COOKIE_SECRET, httponly=True, secure=is_cookie_https)
-        return """
+        
+        frm_login = template("__frm_login")
+        return f"""
+        <template mix-target="frm_login" mix-replace>
+            {frm_login}
+        </template>
         <template mix-redirect="/profile">
         </template>
         """
@@ -185,6 +221,21 @@ def _():
     finally:
         if "db" in locals(): db.close()
 
+
+##############################
+@post("/toogle_item_block")
+def _():
+    try:
+        item_id = request.forms.get("item_id", '')
+        return f"""
+        <template mix-target="[id='{item_id}']" mix-replace>
+            xxxxx
+        </template>
+        """
+    except Exception as ex:
+        pass
+    finally:
+        if "db" in locals(): db.close()
 
 
 ##############################

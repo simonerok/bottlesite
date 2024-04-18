@@ -73,7 +73,7 @@ LIMIT 9,3;
 
 
 -- offset = (currentPage - 1) * itemsPerPage
--- page 1 = 1 2 3
+-- page 1 = 1 2 3+
 -- page 2 = 4 5 6
 -- page 3 = 7 8 9
 -- page 4 = 10
