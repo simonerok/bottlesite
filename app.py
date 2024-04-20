@@ -37,6 +37,19 @@ def _(item_splash_image):
 
 
 ##############################
+@get("/arango")
+def _():
+    try:
+        q = {"query":"FOR item IN items LIMIT 1 RETURN item"}
+        items = x.arango(q)
+        return items
+    except Exception as ex:
+        ic(ex)
+        return ex
+    finally:
+        pass
+
+##############################
 @get("/")
 def _():
     try:

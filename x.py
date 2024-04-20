@@ -2,6 +2,8 @@ import pathlib
 from bottle import request, response
 import re
 import sqlite3
+from icecream import ic
+import requests
 
 ITEMS_PER_PAGE = 2
 COOKIE_SECRET = "41ebeca46f3b-4d77-a8e2-554659075C6319a2fbfb-9a2D-4fb6-Afcad32abb26a5e0"
@@ -18,6 +20,23 @@ def db():
     db = sqlite3.connect(str(pathlib.Path(__file__).parent.resolve())+"/company.db")  
     db.row_factory = dict_factory
     return db
+
+
+##############################
+def arango(query, type = "cursor"):
+    try:
+        url = f"http://arangodb:8529/_api/{type}"
+        res = requests.post( url, json = query )
+        ic(res)
+        ic(res.text)
+        return res.json()
+    except Exception as ex:
+        print("#"*50)
+        print(ex)
+    finally:
+        pass
+
+
 
 
 ##############################
